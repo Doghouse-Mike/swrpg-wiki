@@ -91,6 +91,21 @@ async function joinScripts(scripts: string[]): Promise<string> {
 function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentResources) {
   const cfg = ctx.cfg.configuration
 
+  // Fork (swrpg-quartz): @quartz-community/explorer 1.1.1 calls
+  // `active.scrollIntoView()` on first load to reveal the current note. That
+  // scrolls every ancestor, window included, so landing on a deep link (e.g.
+  // one weapon in a 600-note folder) jumps the page hundreds of pixels down.
+  // Keep the reveal, but scroll only the explorer list.
+  componentResources.beforeDOMLoaded.push(`
+    const nativeScrollIntoView = Element.prototype.scrollIntoView
+    Element.prototype.scrollIntoView = function (arg) {
+      const list = this.closest && this.closest(".explorer-ul")
+      if (!list) return nativeScrollIntoView.call(this, arg)
+      const offset = this.getBoundingClientRect().top - list.getBoundingClientRect().top
+      list.scrollTo({ top: list.scrollTop + offset - list.clientHeight / 3, behavior: "smooth" })
+    }
+  `)
+
   // popovers
   if (cfg.enablePopovers) {
     componentResources.afterDOMLoaded.push(popoverScript)

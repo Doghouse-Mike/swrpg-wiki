@@ -1,3 +1,13 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// SWRPG: @quartz-themes/core ships Obsidian's own Bases stylesheet, which sets
+// `.bases-table { position: absolute }` for Obsidian's virtual scrolling. In
+// Quartz that collapses the wrapper to zero height and every Base table renders
+// invisible ("Showing N of N entries" over an empty box). Unlayered rules beat
+// the theme's `@layer obsidian`, so no !important needed.
+.bases-page .bases-table {
+  position: static;
+  flex: none;
+}
