@@ -104,6 +104,7 @@ plugins:
     options:
       theme: Nostromo
       mode: dark
+      themeFonts: false
   - source: "@quartz-community/explicit-publish"
     enabled: false
   - source: "@quartz-community/alias-redirects"
