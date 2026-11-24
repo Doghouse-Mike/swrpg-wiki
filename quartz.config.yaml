@@ -102,7 +102,7 @@ plugins:
   - source: "@quartz-themes/core"
     enabled: true
     options:
-      theme: HTB HUD
+      theme: Nostromo
       mode: dark
   - source: "@quartz-community/explicit-publish"
     enabled: false
