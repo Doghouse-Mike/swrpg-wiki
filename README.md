@@ -46,27 +46,3 @@ npx quartz build --serve     # http://localhost:8080
 ```
 
 A full build of the ~3,600 notes takes about 6 minutes.
-
-## Optional: rebuild as soon as the vault changes
-
-Add this workflow to the **vault** repo, plus a secret `SITE_DISPATCH_TOKEN`: a
-fine-grained personal access token with access to only `swrpg-wiki` and
-*Contents: Read and write* permission.
-
-```yaml
-# .github/workflows/rebuild-site.yml (in SWRPG-Obsidian-Vault)
-name: Rebuild site
-on:
-  push:
-    branches: [main]
-jobs:
-  dispatch:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          gh api repos/Doghouse-Mike/swrpg-wiki/dispatches -f event_type=vault-updated
-        env:
-          GH_TOKEN: ${{ secrets.SITE_DISPATCH_TOKEN }}
-```
-
-Without it, vault changes go live with the nightly build (or a manual run).
