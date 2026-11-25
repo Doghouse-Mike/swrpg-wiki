@@ -102,7 +102,7 @@ plugins:
   - source: "@quartz-themes/core"
     enabled: true
     options:
-      theme: lcars
+      theme: wake-up-samurai
       mode: dark
       themeFonts: false
   - source: "@quartz-community/explicit-publish"
