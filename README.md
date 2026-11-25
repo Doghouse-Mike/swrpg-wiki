@@ -26,12 +26,6 @@ The site rebuilds when:
 All frontmatter is kept: the properties panel shows every field (except `title`, which is
 already the heading), and the vault's `.base` files render as Bases pages under `/bases/`.
 
-## Theme
-
-Any Obsidian community theme via `@quartz-themes/core`; currently **Nostromo**, dark only.
-Change `theme:` under `@quartz-themes/core` in `quartz.config.yaml`. Other sci-fi themes
-that build cleanly: `Cybertron`, `Space`, `Deep Space Glass`, `Cyber Glow`, `Starfield`.
-
 ## Differences from upstream Quartz (keep these on upgrade)
 
 | What | Where | Why |
