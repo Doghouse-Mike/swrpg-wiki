@@ -32,7 +32,6 @@ already the heading), and the vault's `.base` files render as Bases pages under 
 | --- | --- | --- |
 | `.bases-table { position: static }` | `quartz/styles/custom.scss` | The theme layer ships Obsidian's Bases CSS, whose `position: absolute` (for virtual scrolling) makes every Base table invisible. |
 | Explorer scroll fix | `quartz/plugins/emitters/componentResources.ts` (`Fork (swrpg-quartz)` comment) | `@quartz-community/explorer` 1.1.1 `scrollIntoView`s the active note on first load, which scrolls the whole page down on deep links. |
-| No analytics, latex/encrypted-pages off | `quartz.config.yaml` | Not needed. |
 
 Upgrade with `npx quartz upgrade` (pulls upstream `v5`), then re-check both patches.
 
